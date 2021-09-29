@@ -67,7 +67,7 @@ const fullscreenOn = () => {
     infotext.style.fontSize = "3.5em"
 }
 
-if (parent.firsttime) {fullscreenOn(), parent.firsttime = false}
+// if (parent.firsttime) {fullscreenOn(), parent.firsttime = false}
 
 if (parent.indexfullscreen == true) {fullscreenOn()}
 
