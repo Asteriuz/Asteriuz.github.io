@@ -158,7 +158,6 @@ const play = () => {
         flappy.style.filter = "grayscale(100%)"
         // infotext.innerHTML = "Aperte espaço para jogar de novo"
         Number(score.innerHTML) > localStorage.getItem("recorde") ? localStorage.setItem("recorde", Number(score.innerHTML)) : null
-        console.log(localStorage.getItem("recorde"));
     }
 
     const changeHell = () => {
