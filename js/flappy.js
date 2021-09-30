@@ -45,12 +45,12 @@ var fullscreen = false
 
 var recorde = Number(localStorage.getItem("recorde")) ? localStorage.getItem("recorde") : 0
 
-var requestFullscreen = flappy.webkitRequestFullscreen() || flappy.requestFullscreen()
+var requestFullscreen = flappy.webkitRequestFullscreen || flappy.requestFullscreen
 
 score.innerHTML = "Recorde: " + recorde
 
 buttonFullscreen.onclick = () => {
-    !document.fullscreenElement ? (requestFullscreen, fullscreenOn()) : (parent.indexfullscreen = false, document.exitFullscreen(), parent.reload())
+    !document.fullscreenElement ? (requestFullscreen(), fullscreenOn()) : (parent.indexfullscreen = false, document.exitFullscreen(), parent.reload())
 }
 
 
@@ -303,7 +303,7 @@ document.addEventListener("keydown", (event) => {
             Number(score.innerHTML) || score.innerHTML == "0" ? score.innerHTML = Number(score.innerHTML) - 1 : score.innerHTML = 0
         }
         if (name == "f") {
-            flappy.requestFullscreen(), fullscreenOn()
+            requestFullscreen(), fullscreenOn()
         }
         if (name == " ") {
             running == false ? (running = true, play(), infotext.innerHTML = "") : null
