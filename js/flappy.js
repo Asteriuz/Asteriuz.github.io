@@ -300,8 +300,7 @@ document.addEventListener("keydown", (event) => {
             Number(score.innerHTML) || score.innerHTML == "0" ? score.innerHTML = Number(score.innerHTML) - 1 : score.innerHTML = 0
         }
         if (name == "f") {
-            flappy.requestFullscreen()
-            fullscreenOn()
+            !document.fullscreenElement ? (flappy.requestFullscreen(), fullscreenOn()) : (parent.indexfullscreen = false, document.exitFullscreen(), parent.reload())
         }
         if (name == " ") {
             running == false ? (running = true, play(), infotext.innerHTML = "") : null
