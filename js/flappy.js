@@ -45,12 +45,10 @@ var fullscreen = false
 
 var recorde = Number(localStorage.getItem("recorde")) ? localStorage.getItem("recorde") : 0
 
-var requestFullscreen = flappy.requestFullscreen || flappy.webkitRequestFullscreen
-
 score.innerHTML = "Recorde: " + recorde
 
 buttonFullscreen.onclick = () => {
-    !document.fullscreenElement ? (requestFullscreen(), fullscreenOn()) : (parent.indexfullscreen = false, document.exitFullscreen(), parent.reload())
+    !document.fullscreenElement ? (flappy.requestFullscreen(), fullscreenOn()) : (parent.indexfullscreen = false, document.exitFullscreen(), parent.reload())
 }
 
 
@@ -295,7 +293,6 @@ const addTubo = () => {
 document.addEventListener("keydown", (event) => {
     if (rising == false) {
         var name = event.key
-        console.log(name);
         if (name == "ArrowUp" && dev == true) {
             Number(score.innerHTML) || score.innerHTML == "0" ? score.innerHTML = Number(score.innerHTML) + 1 : score.innerHTML = 0
         }
@@ -303,7 +300,7 @@ document.addEventListener("keydown", (event) => {
             Number(score.innerHTML) || score.innerHTML == "0" ? score.innerHTML = Number(score.innerHTML) - 1 : score.innerHTML = 0
         }
         if (name == "f") {
-            requestFullscreen()
+            flappy.requestFullscreen()
             fullscreenOn()
         }
         if (name == " ") {
