@@ -45,10 +45,12 @@ var fullscreen = false
 
 var recorde = Number(localStorage.getItem("recorde")) ? localStorage.getItem("recorde") : 0
 
+var requestFullscreen = flappy.webkitRequestFullscreen() || flappy.requestFullscreen()
+
 score.innerHTML = "Recorde: " + recorde
 
 buttonFullscreen.onclick = () => {
-    !document.fullscreenElement ? (flappy.requestFullscreen() || flappy.webkitRequestFullscreen(), fullscreenOn()) : (parent.indexfullscreen = false, document.exitFullscreen(), parent.reload())
+    !document.fullscreenElement ? (requestFullscreen, fullscreenOn()) : (parent.indexfullscreen = false, document.exitFullscreen(), parent.reload())
 }
 
 
