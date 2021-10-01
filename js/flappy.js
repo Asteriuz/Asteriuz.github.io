@@ -322,6 +322,19 @@ document.addEventListener("keyup", (event) => {
     }
 })
 
+flappy.addEventListener("mousedown", (e) => {
+    if (e.target != buttonFullscreen) {
+    running == false ? (running = true, play(), infotext.innerHTML = "") : null
+    gameover == true ? parent.reload() : null
+    rising = true
+    gameover == false ? bird.style.transform = "rotate(-10deg)" : null}
+})
+
+flappy.addEventListener("mouseup", (event) => {
+    rising = false
+    gameover == false ? bird.style.transform = "rotate(10deg)" : null
+})
+
 
 function funcDev() {}
 
