@@ -298,7 +298,7 @@ document.addEventListener("keydown", (event) => {
         if (name == "ArrowDown" && dev == true) {
             Number(score.innerHTML) || score.innerHTML == "0" ? score.innerHTML = Number(score.innerHTML) - 1 : score.innerHTML = 0
         }
-        if (name == "f") {
+        if (name == "f" && running == false) {
             !document.fullscreenElement ? (flappy.requestFullscreen(), fullscreenOn()) : (parent.indexfullscreen = false, document.exitFullscreen(), parent.reload())
         }
         if (name == " ") {
