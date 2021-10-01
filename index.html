@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <iframe id="flappyframe" src="./index2.html" frameborder="0"></iframe>
+    <iframe id="flappyframe" src="./index2.html?v=1.2" frameborder="0"></iframe>
 </body>
 <script>
     firsttime = true
@@ -18,23 +18,6 @@
         iframe.src = iframe.src
     }
     indexfullscreen = false
-
-
-    window.addEventListener('load', function () {
-        navigator
-            .serviceWorker
-            .register('/service-worker.js');
-    });
-
-    self.addEventListener('fetch', function (event) {
-        event.respondWith(async function () {
-            let headers = new Headers()
-            headers.append("Clear-Site-Data", "\"cache\"")
-            return fetch(event.request, {
-                headers: headers
-            })
-        }());
-    });
 </script>
 
 </html>
