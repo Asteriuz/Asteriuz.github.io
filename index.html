@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <link rel="shortcut icon" href="#">
     <meta charset="UTF-8">
     <title>Flappy Dimensions</title>
     <link rel="stylesheet" href="./assets/css/flappy.css">
 </head>
+
 <body>
     <iframe id="flappyframe" src="./index2.html" frameborder="0"></iframe>
 </body>
@@ -16,5 +18,23 @@
         iframe.src = iframe.src
     }
     indexfullscreen = false
+
+
+    window.addEventListener('load', function () {
+        navigator
+            .serviceWorker
+            .register('/service-worker.js');
+    });
+
+    self.addEventListener('fetch', function (event) {
+        event.respondWith(async function () {
+            let headers = new Headers()
+            headers.append("Clear-Site-Data", "\"cache\"")
+            return fetch(event.request, {
+                headers: headers
+            })
+        }());
+    });
 </script>
+
 </html>
