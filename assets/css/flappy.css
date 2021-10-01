@@ -211,3 +211,7 @@ iframe {
     filter: invert();
     z-index: 3;
 }
+
+[disable-dbl-tap-zoom] {
+    touch-action: manipulation;
+}
