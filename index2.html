@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html manifest="cache.manifest">
 
 <head>
     <link rel="shortcut icon" href="#">
@@ -9,6 +9,7 @@
     <script src="js/modules/chance.min.js"></script>
     <script src="js/modules/jquery-2.1.4.js"></script>
     <script src="js/modules/jquery-ui-1.9.2.custom.min.js"></script>
+    <script type="text/javascript" src="update_cache.js"></script>
     <link rel="stylesheet" href="assets/css/flappy.css">
     <link rel="prefetch" href="assets/imgs/hell.png">
     <link rel="prefetch" href="assets/imgs/halloweenTheme.png">
@@ -17,8 +18,8 @@
     <link rel="prefetch" href="assets/imgs/portal.gif">
 </head>
 
-<body class="conteudo">
-    <h1 class="title">Flappy Dimensions</h1>
+<body onload="checkForUpdate()" class="conteudo">
+    <h1 class="title">Flappy Dimensions v1.0</h1>
     <div wm-flappy>
         <div id="animatedBackground"></div>
         <div class="flashing flashhit"></div>
