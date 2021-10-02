@@ -12,6 +12,7 @@ const score = document.querySelector(".score")
 const background = document.querySelector("#animatedBackground")
 const title = document.querySelector(".title")
 const buttonFullscreen = document.getElementById("fullscreen")
+const body = document.querySelector("body")
 
 let cima = document.querySelector(".cima")
 let baixo = document.querySelector(".baixo")
@@ -53,6 +54,23 @@ buttonFullscreen.onclick = () => {
 
 
 
+
+const mobile = () => {
+    title.style.display = "none"
+    flappy.style.width = "100%"
+    flappy.style.height = "100%"
+    flappy.style.top = "0px"
+    flappy.style.margin = "0"
+    infotext.style.display = "none"
+    bird.style.left = "0px"
+}
+
+if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+    mobile()
+}
+
+
+
 const fullscreenOn = () => {
     flappy.style.top = "0px"
     flappy.style.margin = "0px"
@@ -69,7 +87,9 @@ const fullscreenOn = () => {
 
 // if (parent.firsttime) {fullscreenOn(), parent.firsttime = false}
 
-if (parent.indexfullscreen == true) {fullscreenOn()}
+if (parent.indexfullscreen == true) {
+    fullscreenOn()
+}
 
 const play = () => {
     Number(score.innerHTML) ? null : score.innerHTML = 0
@@ -81,7 +101,7 @@ const play = () => {
     let pos = 0
     let horaDoTubo = 400
     let horaDeSumir = -1200
-    
+
     if (fullscreen) {
         horaDoTubo = 533
         horaDeSumir = -1600
@@ -125,9 +145,11 @@ const play = () => {
 
     moveTuboY = (tubo, y, ytemp, tuborising = false) => {
         moverTubo = setInterval(() => {
-            if (!fullscreen) {tuborising == false && ytemp < (y + 70) ? ytemp += 1 : tuborising = true
-            tuborising == true && ytemp > (y - 70) ? ytemp -= 1 : tuborising = false}
-            else {tuborising == false && ytemp < (y + 112) ? ytemp += 1.6 : tuborising = true
+            if (!fullscreen) {
+                tuborising == false && ytemp < (y + 70) ? ytemp += 1 : tuborising = true
+                tuborising == true && ytemp > (y - 70) ? ytemp -= 1 : tuborising = false
+            } else {
+                tuborising == false && ytemp < (y + 112) ? ytemp += 1.6 : tuborising = true
                 tuborising == true && ytemp > (y - 112) ? ytemp -= 1.6 : tuborising = false
             }
             tubo.style.height = ytemp + "px"
@@ -136,9 +158,11 @@ const play = () => {
 
     moveTuboX = (tubo, x, xtemp, tuboright = false) => {
         moverTubo = setInterval(() => {
-            if (!fullscreen) {tuboright == false && xtemp < (x + 35) ? xtemp += 0.5 : tuboright = true
-            tuboright == true && xtemp > (x - 70) ? xtemp -= 1 : tuboright = false}
-            else {tuboright == false && xtemp < (x + 46.5) ? xtemp += 0.6 : tuboright = true
+            if (!fullscreen) {
+                tuboright == false && xtemp < (x + 35) ? xtemp += 0.5 : tuboright = true
+                tuboright == true && xtemp > (x - 70) ? xtemp -= 1 : tuboright = false
+            } else {
+                tuboright == false && xtemp < (x + 46.5) ? xtemp += 0.6 : tuboright = true
                 tuboright == true && xtemp > (x - 93) ? xtemp -= 1.3 : tuboright = false
             }
             tubo.style.right = xtemp + "px"
@@ -282,8 +306,8 @@ const addTubo = () => {
     tubo2.style.right = tuboposition + "px"
     Number(score.innerHTML) >= 20 && Number(score.innerHTML) < 50 && Math.random() > 0.5 ? !tubo2.children[0].classList.contains("movingtubo") ? moveTuboX(tubo2, tuboposition, tuboposition) : null : null
     Number(score.innerHTML) >= 50 && Math.random() > 0.25 ? tubo2.children[0].classList.contains("movingtubo") ? moveTuboX(tubo2, tuboposition, tuboposition) : null : null
-    
-    !fullscreen ? tuboposition -= 400 : tuboposition -= 533
+
+        !fullscreen ? tuboposition -= 400 : tuboposition -= 533
 
     tubos.appendChild(tubo2)
 }
@@ -324,10 +348,11 @@ document.addEventListener("keyup", (event) => {
 
 flappy.addEventListener("mousedown", (e) => {
     if (e.target != buttonFullscreen) {
-    running == false ? (running = true, play(), infotext.innerHTML = "") : null
-    gameover == true ? parent.reload() : null
-    rising = true
-    gameover == false ? bird.style.transform = "rotate(-10deg)" : null}
+        running == false ? (running = true, play(), infotext.innerHTML = "") : null
+        gameover == true ? parent.reload() : null
+        rising = true
+        gameover == false ? bird.style.transform = "rotate(-10deg)" : null
+    }
 })
 
 flappy.addEventListener("mouseup", (event) => {
@@ -337,10 +362,11 @@ flappy.addEventListener("mouseup", (event) => {
 
 flappy.addEventListener("touchstart", (e) => {
     if (e.target != buttonFullscreen) {
-    running == false ? (running = true, play(), infotext.innerHTML = "") : null
-    gameover == true ? parent.reload() : null
-    rising = true
-    gameover == false ? bird.style.transform = "rotate(-10deg)" : null}
+        running == false ? (running = true, play(), infotext.innerHTML = "") : null
+        gameover == true ? parent.reload() : null
+        rising = true
+        gameover == false ? bird.style.transform = "rotate(-10deg)" : null
+    }
 })
 
 flappy.addEventListener("touchend", (event) => {

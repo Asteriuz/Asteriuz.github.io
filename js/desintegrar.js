@@ -3,7 +3,8 @@ var imageDataArray = [];
 
 function snapEffect() {
     html2canvas($(".bird")[0], {
-        backgroundColor: null
+        backgroundColor: null,
+        scale: 1
     }).then(canvas => {
         //capture all div data as image
         ctx = canvas.getContext("2d");
